@@ -1,0 +1,9 @@
+com\catalog\ui\MainFrame$1.class
+com\catalog\App.class
+com\catalog\dao\Db.class
+com\catalog\ui\MainFrame$2.class
+com\catalog\model\Product.class
+com\catalog\ui\MainFrame.class
+com\catalog\dao\CategoryDao.class
+com\catalog\dao\ProductDao.class
+com\catalog\model\Category.class
