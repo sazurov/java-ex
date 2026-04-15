@@ -1,0 +1,16 @@
+com\example\ui\dialog\CategoryDialog.class
+com\example\dao\EquipmentDAO.class
+com\example\Main.class
+com\example\ui\MainFrame.class
+com\example\ui\dialog\EquipmentDialog.class
+com\example\dao\CategoryDAO.class
+com\example\database\DatabaseConnection.class
+com\example\ui\panel\CategoryPanel$1.class
+com\example\ui\panel\EquipmentPanel$1.class
+com\example\util\ValidationUtil.class
+com\example\ui\panel\CategoryPanel.class
+com\example\model\Equipment.class
+com\example\util\ValidationUtil$ValidationResult.class
+com\example\ui\panel\EquipmentPanel.class
+com\example\ui\panel\AnalyticsPanel.class
+com\example\model\Category.class
