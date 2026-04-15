@@ -17,10 +17,11 @@ public class MainFrame extends JFrame {
     private static final Logger logger = LoggerFactory.getLogger(MainFrame.class);
     
     private JTabbedPane tabbedPane;
+    private AnalyticsPanel analyticsPanel;
 
     public MainFrame() {
-        initComponents();
         initializeDatabase();
+        initComponents();
     }
 
     private void initComponents() {
@@ -39,7 +40,13 @@ public class MainFrame extends JFrame {
         tabbedPane.addTab("🏢 Отделы", new DepartmentPanel());
         
         // Вкладка "Аналитика"
-        tabbedPane.addTab("📊 Аналитика", new AnalyticsPanel());
+        analyticsPanel = new AnalyticsPanel();
+        tabbedPane.addTab("📊 Аналитика", analyticsPanel);
+        tabbedPane.addChangeListener(e -> {
+            if (tabbedPane.getSelectedComponent() == analyticsPanel) {
+                analyticsPanel.refreshData();
+            }
+        });
         
         add(tabbedPane, BorderLayout.CENTER);
         

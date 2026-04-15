@@ -23,55 +23,82 @@
 
 - Java 11+
 - Maven 3.6+
-- PostgreSQL 12+
+- Docker Desktop (рекомендуется для быстрого старта PostgreSQL)
 
-## Установка и настройка
+Проверьте инструменты в PowerShell:
 
-### 1. Установка PostgreSQL
-
-```bash
-# Windows
-choco install postgresql
-
-# macOS
-brew install postgresql
-
-# Linux (Ubuntu)
-sudo apt-get install postgresql
+```powershell
+java -version
+mvn -version
+docker --version
 ```
 
-### 2. Создание базы данных
+## Запуск на Windows (PowerShell)
 
-```sql
-CREATE DATABASE employee_db;
+### 1) Перейти в папку проекта
+
+```powershell
+cd "C:\Users\User\Desktop\java-ex\02\employee"
 ```
 
-### 3. Проверка параметров подключения
+### 2) Поднять PostgreSQL в Docker на отдельном порту
 
-Отредактируйте файл `src/main/java/com/example/database/DatabaseConnection.java` при необходимости:
+В проекте используется порт `55433`, чтобы избежать конфликтов с локальным PostgreSQL на `5432`.
+
+```powershell
+docker rm -f employee-db
+docker run --name employee-db `
+  -e POSTGRES_DB=employee_db `
+  -e POSTGRES_USER=postgres `
+  -e POSTGRES_PASSWORD=postgres `
+  -p 55433:5432 -d postgres:16
+```
+
+### 3) Дождаться готовности БД
+
+```powershell
+do {
+  Start-Sleep -Seconds 2
+  docker exec employee-db pg_isready -U postgres -d employee_db | Out-Host
+} until ($LASTEXITCODE -eq 0)
+```
+
+### 4) Проверить параметры подключения в приложении
+
+Файл: `src/main/java/com/example/database/DatabaseConnection.java`
 
 ```java
-private static final String URL = "jdbc:postgresql://localhost:5432/employee_db";
+private static final String URL = "jdbc:postgresql://localhost:55433/employee_db";
 private static final String USER = "postgres";
 private static final String PASSWORD = "postgres";
 ```
 
-### 4. Сборка проекта
+### 5) Сборка и запуск приложения
 
-```bash
+```powershell
 mvn clean package
+mvn exec:java "-Dexec.mainClass=com.example.Main"
 ```
 
-### 5. Запуск приложения
+Если в PowerShell возникает ошибка `Unknown lifecycle phase ".mainClass=..."`, запустите так:
 
-```bash
-mvn exec:java -Dexec.mainClass="com.example.Main"
+```powershell
+mvn --% exec:java -Dexec.mainClass=com.example.Main
 ```
 
-Или после сборки:
+## Быстрые команды
 
-```bash
-java -jar target/employee-management-system-1.0.0-jar-with-dependencies.jar
+Остановить/запустить БД:
+
+```powershell
+docker stop employee-db
+docker start employee-db
+```
+
+Удалить БД-контейнер:
+
+```powershell
+docker rm -f employee-db
 ```
 
 ## Структура проекта

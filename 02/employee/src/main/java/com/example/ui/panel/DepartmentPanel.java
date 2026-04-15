@@ -121,7 +121,7 @@ public class DepartmentPanel extends JPanel {
     private void addDepartment() {
         Department newDept = new Department();
         DepartmentDialog dialog = new DepartmentDialog(
-            SwingUtilities.getWindowAncestor(this),
+            JOptionPane.getFrameForComponent(this),
             "Добавить отдел",
             newDept
         );
@@ -155,7 +155,7 @@ public class DepartmentPanel extends JPanel {
         }
         
         DepartmentDialog dialog = new DepartmentDialog(
-            SwingUtilities.getWindowAncestor(this),
+            JOptionPane.getFrameForComponent(this),
             "Редактировать отдел",
             dept
         );

@@ -1,0 +1,16 @@
+com\example\Main.class
+com\example\model\Department.class
+com\example\model\Employee.class
+com\example\ui\MainFrame.class
+com\example\dao\DepartmentDAO.class
+com\example\ui\panel\EmployeePanel.class
+com\example\database\DatabaseConnection.class
+com\example\ui\dialog\EmployeeDialog.class
+com\example\ui\dialog\DepartmentDialog.class
+com\example\util\ValidationUtil.class
+com\example\ui\panel\DepartmentPanel$1.class
+com\example\ui\panel\DepartmentPanel.class
+com\example\util\ValidationUtil$ValidationResult.class
+com\example\ui\panel\AnalyticsPanel.class
+com\example\ui\panel\EmployeePanel$1.class
+com\example\dao\EmployeeDAO.class

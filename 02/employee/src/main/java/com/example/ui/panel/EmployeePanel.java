@@ -226,7 +226,7 @@ public class EmployeePanel extends JPanel {
     private void addEmployee() {
         Employee newEmp = new Employee();
         EmployeeDialog dialog = new EmployeeDialog(
-            SwingUtilities.getWindowAncestor(this),
+            JOptionPane.getFrameForComponent(this),
             "Добавить сотрудника",
             newEmp
         );
@@ -260,7 +260,7 @@ public class EmployeePanel extends JPanel {
         }
         
         EmployeeDialog dialog = new EmployeeDialog(
-            SwingUtilities.getWindowAncestor(this),
+            JOptionPane.getFrameForComponent(this),
             "Редактировать сотрудника",
             emp
         );

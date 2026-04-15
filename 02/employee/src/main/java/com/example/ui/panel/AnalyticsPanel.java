@@ -20,7 +20,7 @@ public class AnalyticsPanel extends JPanel {
     private EmployeeDAO employeeDAO = new EmployeeDAO();
 
     public AnalyticsPanel() {
-        initComponents();
+        refreshData();
     }
 
     private void initComponents() {
@@ -38,6 +38,16 @@ public class AnalyticsPanel extends JPanel {
         
         // График 4: Статистика
         add(createStatisticsPanel());
+    }
+
+    /**
+     * Пересобрать аналитику из актуальных данных БД.
+     */
+    public void refreshData() {
+        removeAll();
+        initComponents();
+        revalidate();
+        repaint();
     }
 
     private ChartPanel createDepartmentPieChart() {

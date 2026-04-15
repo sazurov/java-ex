@@ -14,7 +14,7 @@ import java.sql.Statement;
 public class DatabaseConnection {
     private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
     
-    private static final String URL = "jdbc:postgresql://localhost:5432/employee_db";
+    private static final String URL = "jdbc:postgresql://localhost:55433/employee_db";
     private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
 
